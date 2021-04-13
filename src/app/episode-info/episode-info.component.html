@@ -1,0 +1,40 @@
+<div class="qwe" *ngFor="let episodeItem of episodeId">
+    <form [formGroup]="form" (ngSubmit)="submit()">
+        <dx-form id="form" [formData]="episodeItem">
+            <dxi-item itemType="group" caption="Main Info">
+
+                <dxi-item dataField="id">
+                    <dx-text-box name="id" formControlName="id" [(value)]="id" [isValid]="idControl.valid"
+                        [validationError]="{ message: 'Id field required'}">>
+                    </dx-text-box>
+                </dxi-item>
+                <dxi-item dataField="name">
+                    <dx-text-box name="name" formControlName="name" [(value)]="name" [isValid]="nameControl.valid"
+                        [validationError]="{ message: 'Name field required'}">>
+                    </dx-text-box>
+                </dxi-item>
+                <dxi-item dataField="air_date">
+                    <dx-text-box name="date" formControlName="date" [(value)]="date" [isValid]="dateControl.valid"
+                        [validationError]="{ message: 'Date field required'}">>
+                    </dx-text-box>
+                </dxi-item>
+                <dxi-item dataField="episode">
+                    <dx-text-box name="episode" formControlName="episode" [(value)]="episode"
+                        [isValid]="episodeControl.valid" [validationError]="{ message: 'Episode field required'}">>
+                    </dx-text-box>
+                </dxi-item>
+                <dxi-item>
+                    <div>
+                        <dx-tag-box [disabled]="true" [grouped]="true" [value]="[episodeItem.characters[1].name]">
+                        </dx-tag-box>
+                    </div>
+                </dxi-item>
+            </dxi-item>
+
+        </dx-form>
+        <button [disabled]="form.invalid" (click)="submit()">Back</button>
+
+
+    </form>
+
+</div>

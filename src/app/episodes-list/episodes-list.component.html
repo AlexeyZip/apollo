@@ -1,0 +1,17 @@
+<dx-data-grid id="gridContainer" [dataSource]="allEpisodes" [showBorders]="true">
+    <dxo-paging [pageSize]="5"></dxo-paging>
+    <dxo-pager [showPageSizeSelector]="true" [allowedPageSizes]="[5, 10]" [showInfo]="true">
+    </dxo-pager>
+    <dxi-column dataField="id"></dxi-column>
+    <dxi-column dataField="name"></dxi-column>
+    <dxi-column dataField="air_date" caption="Date"></dxi-column>
+    <dxi-column dataField="episode"></dxi-column>
+    <dxi-column dataField="characters.length" caption="characters"></dxi-column>
+    <dxi-column cellTemplate="priceCellTemplate">
+    </dxi-column>
+    <div *dxTemplate="let cell of 'priceCellTemplate'">
+        <button>
+            <a [routerLink]="['episode']" [queryParams]="{'id': cell.data.id }">Open</a>
+        </button>
+    </div>
+</dx-data-grid>
